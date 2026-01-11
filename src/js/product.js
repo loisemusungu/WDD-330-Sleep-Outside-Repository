@@ -6,16 +6,16 @@ const dataSource = new ProductData("tents");
 function addProductToCart(product) {
   // console.log(product);
   let cart = getLocalStorage("so-cart") || []; // get existing cart or initialize empty array
-  
-  if(! Array.isArray(cart)){  // check to see if the cart is an array format
+
+  if (!Array.isArray(cart)) {
+    // check to see if the cart is an array format
     cart = new Array();
   }
-   
+
   cart.push(product); // add product to cart array
   setLocalStorage("so-cart", cart); // save updated cart to local storage
   alert("Product added to cart!");
 }
-
 
 // add to cart button event handler
 async function addToCartHandler(e) {
@@ -27,4 +27,3 @@ async function addToCartHandler(e) {
 document
   .getElementById("addToCart")
   .addEventListener("click", addToCartHandler);
- 
