@@ -25,3 +25,15 @@ _BYU-Pathway Worldwide improves lives through access to spiritually based, onlin
 
 
 
+
+## Fixing the cart bug
+
+ let cart = getLocalStorage("so-cart") || [];<br>
+ The line of code above is found in the products.js on line 8. <br>
+To fix it one needs to check if the cart variable is an of type Array object. 
+
+ if(! Array.isArray(cart)){
+    cart = new Array();
+ }
+
+ This I believe fix the bug. But, now we need to find a way to aggregate the quantity and final price of the items in the cart.
