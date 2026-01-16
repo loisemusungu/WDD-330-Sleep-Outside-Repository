@@ -1,19 +1,19 @@
 // function to generate HTML for a single product card
 function productCardTemplate(product) {
     return `
-      <section class="product-card">
-        <h3>${product.name}</h3>
-        <img src="${product.image}" alt="${product.name}">
-        <p>${product.description}</p>
-        <p class="price">Ksh ${product.price}</p>
-      </section>
+      <li class="product-card">
+        <a href="product_pages/?product=${encodeURIComponent(product.NameWithoutBrand)}">
+          <img src="${product.Image}" alt="Image of ${product.NameWithoutBrand}">
+          <h2 class="card__brand">${product.Brand.Name}</h2>
+          <h3 class="card__name">${product.NameWithoutBrand}</h3>
+          <p class="product-card__price">Ksh ${product.FinalPrice}</p>
+        </a>
+      </li>
     `;
   }
-
-export default class ProductList {
+  
+  export default class ProductList {
     constructor(category, dataSource, listElement) {
-    // I passed in this information to make the class as reusable as possible.
-    // Being able to define these things when you use the class will make it very flexible
       this.category = category;
       this.dataSource = dataSource;
       this.listElement = listElement;
@@ -21,16 +21,17 @@ export default class ProductList {
     }
   
     async init() {
-        // the dataSource will return a Promise, so we need to use await here
+      // fetch products from the data source
       this.products = await this.dataSource.getData();
+      // render the list after fetching
+      this.renderList(this.products);
     }
-
+  
     renderList(products) {
-        // transform each product into HTML using the template
-        const html = products.map(productCardTemplate).join("");
-        
-        // insert the generated HTML into the DOM
-        this.listElement.innerHTML = html;
-      }
+      // generate HTML for each product and join them
+      const html = products.map(productCardTemplate).join("");
+      // insert the HTML into the DOM
+      this.listElement.innerHTML = html;
+    }
   }
   
