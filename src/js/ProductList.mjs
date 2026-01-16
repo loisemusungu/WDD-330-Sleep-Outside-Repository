@@ -24,5 +24,13 @@ export default class ProductList {
         // the dataSource will return a Promise, so we need to use await here
       this.products = await this.dataSource.getData();
     }
+
+    renderList(products) {
+        // transform each product into HTML using the template
+        const html = products.map(productCardTemplate).join("");
+        
+        // insert the generated HTML into the DOM
+        this.listElement.innerHTML = html;
+      }
   }
   
