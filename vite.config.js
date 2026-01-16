@@ -8,7 +8,7 @@ export default defineConfig({
     outDir: "../dist",
     rollupOptions: {
       input: {
-        main: "index.html",
+        main: "src/index.html",
         cart: "src/cart/index.html",
         checkout: "src/checkout/index.html",
       },
