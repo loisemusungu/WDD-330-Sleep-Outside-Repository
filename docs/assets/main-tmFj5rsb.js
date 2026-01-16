@@ -1,4 +1,4 @@
-import{r as s}from"./utils-DD45LJKN.js";function n(e){if(e.ok)return e.json();throw new Error("Bad Response")}class c{constructor(t){this.category=t,this.path=`/json/${this.category}.json`}getData(){return fetch(this.path).then(n).then(t=>t)}async findProductById(t){return(await this.getData()).find(r=>r.Id===t)}}function o(e){return`
+import{r as s}from"./utils-DVcvGl7J.js";function n(e){if(e.ok)return e.json();throw new Error("Bad Response")}class c{constructor(t){this.category=t,this.path=`/json/${this.category}.json`}getData(){return fetch(this.path).then(n).then(t=>t)}async findProductById(t){return(await this.getData()).find(r=>r.Id===t)}}function o(e){return`
     <li class="product-card">
       <a href="product_pages/?product=${e.Id}">
         <img src="${e.Image}" alt="${e.Name}">
