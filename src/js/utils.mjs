@@ -21,3 +21,11 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+
+export function getParam(param) {
+  const queryString = window.location.search;
+  const searchParam = new URLSearchParams(queryString);
+  const product = searchParam.get("product");
+  return product;
+
+}
