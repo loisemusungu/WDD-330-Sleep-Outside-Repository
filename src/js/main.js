@@ -3,7 +3,6 @@ import ProductData from "./ProductData.mjs";
 
 const dataSource = new ProductData("tents");
 
-
 // select the HTML element where products will be displayed
 const listElement = document.querySelector("#productList");
 
@@ -19,10 +18,10 @@ async function start() {
   listElement.innerHTML = productList.products
     .map((item) => `
       <section class="product-card">
-        <h3>${item.name}</h3>
-        <img src="${item.image}" alt="${item.name}">
-        <p>${item.description}</p>
-        <p class="price">Ksh ${item.price}</p>
+        <h3>${item.Name}</h3>
+        <img src="${item.Image}" alt="${item.Name}">
+        <p>${item.DescriptionHtmlSimple}</p>
+        <p class="price">$ ${item.FinalPrice}</p>
       </section>
     `)
     .join("");

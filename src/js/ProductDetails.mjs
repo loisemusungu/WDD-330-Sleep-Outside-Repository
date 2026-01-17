@@ -9,15 +9,19 @@ export default class ProductDetails {
   }
 
   async init() {
-    // use the datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it
+    // Get the details for the current product
     this.product = await this.dataSource.findProductById(this.productId);
-    // the product details are needed before rendering the HTML
+    
+    console.log("Fetched product:", this.product);
+
+    // Render product details
     this.renderProductDetails();
-    // once the HTML is rendered, add a listener to the Add to Cart button
-    // Notice the .bind(this). This callback will not work if the bind(this) is missing. Review the readings from this week on 'this' to understand why.
-    document
-      .getElementById('addToCart')
-      .addEventListener('click', this.addProductToCart.bind(this));
+    
+    // Add listener to the Add to Cart button
+    const addBtn = document.getElementById('addToCart');
+    if (addBtn) {
+      addBtn.addEventListener('click', this.addProductToCart.bind(this));
+    }
   }
 
   addProductToCart() {
@@ -31,17 +35,53 @@ export default class ProductDetails {
   }
 }
 
+// Template function to render product details and discount
 function productDetailsTemplate(product) {
-  document.querySelector('h2').textContent = product.Brand.Name;
-  document.querySelector('h3').textContent = product.NameWithoutBrand;
+  console.log("Product object:", product);
 
+  // Brand and product name
+  const h2 = document.querySelector('h2');
+  const h3 = document.querySelector('h3');
+  if (h2) h2.textContent = product.NameWithoutBrand;
+  if (h3) h3.textContent = product.Brand?.Name || "";
+
+  // Product image
   const productImage = document.getElementById('productImage');
-  productImage.src = product.Image;
-  productImage.alt = product.NameWithoutBrand;
+  if (productImage) {
+    productImage.src = product.Image;
+    productImage.alt = product.NameWithoutBrand;
+  }
 
-  document.getElementById('productPrice').textContent = product.FinalPrice;
-  document.getElementById('productColor').textContent = product.Colors[0].ColorName;
-  document.getElementById('productDesc').innerHTML = product.DescriptionHtmlSimple;
+  // Prices
+  const priceEl = document.getElementById('productPrice');
+  const discountEl = document.getElementById('productDiscount');
 
-  document.getElementById('addToCart').dataset.id = product.Id;
+  if (priceEl) priceEl.textContent = `$${product.FinalPrice.toFixed(2)}`;
+  if (discountEl) {
+    const discountAmount = product.SuggestedRetailPrice - product.FinalPrice;
+    const discountPercent = Math.round((discountAmount / product.SuggestedRetailPrice) * 100);
+
+    console.log("SuggestedRetailPrice:", product.SuggestedRetailPrice);
+    console.log("FinalPrice:", product.FinalPrice);
+    console.log("DiscountAmount:", discountAmount, "DiscountPercent:", discountPercent);
+
+    if (discountAmount > 0) {
+      discountEl.textContent = `Save $${discountAmount.toFixed(2)} (${discountPercent}% off)`;
+      discountEl.style.color = "red";
+      discountEl.style.fontWeight = "bold";
+    } else {
+      discountEl.textContent = "";
+    }
+  }
+
+  // Other details
+  const colorEl = document.getElementById('productColor');
+  const descEl = document.getElementById('productDesc');
+
+  if (colorEl && product.Colors.length > 0) colorEl.textContent = product.Colors[0].ColorName;
+  if (descEl) descEl.innerHTML = product.DescriptionHtmlSimple || "";
+
+  // Set Add to Cart button data
+  const addBtn = document.getElementById('addToCart');
+  if (addBtn) addBtn.dataset.id = product.Id;
 }
