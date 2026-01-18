@@ -121,6 +121,7 @@ button {
   padding-top: 1em;
   position: relative;
   text-align: center;
+  /* position: fixed; */
 }
 
 .cart svg {
@@ -129,6 +130,18 @@ button {
 
 .cart:hover svg {
   fill: gray;
+}
+
+.cart .count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 6px -3px;
+  background-color: var(--primary-color);
+  color: var(--dark-grey);
+  font-weight: 500;
+  border-radius: 50px;
+  padding: 1px;
 }
 
 /* End cart icon styles */

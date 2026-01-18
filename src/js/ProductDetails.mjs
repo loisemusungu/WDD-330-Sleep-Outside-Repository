@@ -1,5 +1,5 @@
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
-
+import { displayCount } from "./utils.mjs";
 export default class ProductDetails {
 
     //The constructor will keep track of information about itself
@@ -24,13 +24,14 @@ export default class ProductDetails {
     //addProductToCart(product)
     //No need for parameter here because the product is present in the class
     
-    addProductToCart() {
-
+    addProductToCart() {   
         let newProduct = getLocalStorage("so-cart") || []; // get existing cart or initialize empty array
 
         newProduct.push(this.product); // add product to cart array
 
-        setLocalStorage("so-cart", newProduct); // save updated cart to local storage  
+        setLocalStorage("so-cart", newProduct); // save updated cart to local storage
+        
+        displayCount(".count", "so-cart");
     }
 
     renderProductDetails() {

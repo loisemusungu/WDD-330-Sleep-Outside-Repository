@@ -29,3 +29,24 @@ export function getParam(param) {
   return product;
 
 }
+
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
+
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+  //map transform each product to an array of HTML Strings
+  const htmlStrings = list.map(templateFn);
+
+  //insertAdjacentHTML("") is a DOM method use to insert html code as a string
+  parentElement.insertAdjacentHTML(position,  htmlStrings.join(""));
+}
+
+export function displayCount(element, key) {
+  const el = document.querySelector(element);
+  const storage = getLocalStorage(key);
+
+  const count = storage ? storage.length : 0;
+  el.textContent = count;
+}
+
