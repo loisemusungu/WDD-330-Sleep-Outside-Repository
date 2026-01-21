@@ -1,4 +1,4 @@
-import{g as c}from"./utils-DVcvGl7J.js";function e(){const r=c("so-cart")||[];if(r.length===0){document.querySelector(".product-list").innerHTML="<p>Your cart is empty</p>";return}const a=r.map(t=>n(t));document.querySelector(".product-list").innerHTML=a.join("")}function n(r){return!r||!r.Image?"":`<li class="cart-card divider">
+import{g as c}from"./utils-Gqkk3m-O.js";function e(){const r=c("so-cart")||[];if(r.length===0){document.querySelector(".product-list").innerHTML="<p>Your cart is empty</p>";return}const a=r.map(t=>n(t));document.querySelector(".product-list").innerHTML=a.join("")}function n(r){return!r||!r.Image?"":`<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
       src="${r.Image}"

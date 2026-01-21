@@ -3,7 +3,7 @@ import { renderListWithTemplate } from "./utils.mjs";
 function productCardTemplate(product) {
     return `
     <li class="product-card">
-      <a href="product_pages/?product=${product.Id}">
+        <a href="/product_pages/index.html?product=${product.Id}">
         <img src="${product.Image}" alt="${product.Name}">
         <h2>${product.Brand.Name}</h2>
         <h3>${product.Name}</h3>
@@ -35,17 +35,3 @@ export default class ProductList {
     }
 
 }
-function updateCartBadge() {
-    const cartItems = JSON.parse(localStorage.getItem("so-cart")) || [];
-    const count = cartItems.length;
-    document.querySelector('.cart_count').textContent = count;
-}
-updateCartBadge();
-
-function addToCart(product) {
-    let cart = JSON.parse(localStorage.getItem("so-cart")) || [];
-    cart.push(product);
-    localStorage.setItem("so-cart", JSON.stringify(cart));
-    updateCartBadge();
-}
-export { addToCart };
