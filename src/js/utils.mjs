@@ -76,21 +76,4 @@ export async function loadHeaderFooter() {
   const footerElement = document.querySelector("#main-footer");
   renderWithTemplate(footerTemplate, footerElement);
 }
-
-export async function loadProducts() {
-  const res = await fetch("/src/data/products.json");
-  const products = await res.json();
-  return products;
-}
-
-export async function loadCart() {
-  const res = await fetch("/src/data/cart.json");
-  const cart = await res.json();
-  return cart;
-}
-
-export function loadCheckout() {
-  const res = fetch("/src/data/checkout.json");
-  const checkout = res.json();
-  return checkout;
-}
+loadHeaderFooter();
