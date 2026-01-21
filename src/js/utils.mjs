@@ -68,29 +68,29 @@ export async function loadTemplate(path) {
 }
 
 export async function loadHeaderFooter() {
-  const headerTemplate = await loadTemplate("./partials/header.html");
+  const headerTemplate = await loadTemplate("/src/partials/header.html");
   const headerElement = document.querySelector("#main-header");
   renderWithTemplate(headerTemplate, headerElement);
 
-  const footerTemplate = await loadTemplate("./partials/footer.html");
+  const footerTemplate = await loadTemplate("/src/partials/footer.html");
   const footerElement = document.querySelector("#main-footer");
   renderWithTemplate(footerTemplate, footerElement);
 }
 
 export async function loadProducts() {
-  const res = await fetch("./data/products.json");
+  const res = await fetch("/src/data/products.json");
   const products = await res.json();
   return products;
 }
 
 export async function loadCart() {
-  const res = await fetch("./data/cart.json");
+  const res = await fetch("/src/data/cart.json");
   const cart = await res.json();
   return cart;
 }
 
 export function loadCheckout() {
-  const res = fetch("./data/checkout.json");
+  const res = fetch("/src/data/checkout.json");
   const checkout = res.json();
   return checkout;
 }
