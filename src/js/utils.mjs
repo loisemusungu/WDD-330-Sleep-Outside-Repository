@@ -31,27 +31,66 @@ export function getParam(param) {
 
 /**
  * Render a list of items into the DOM using a template function.
- * @param {Function} templateFn - Function that returns an HTML string for a single item.
+ * @param {Function} template - Function that returns an HTML string for a single item.
  * @param {HTMLElement} parentElement - The DOM element to insert the list into.
- * @param {Array} list - Array of items to render.
+ * @param {Array} data - Array of items to render.
+ * @param {Function} callback - Function to call after rendering.
  * @param {string} [position="afterbegin"] - Position for insertAdjacentHTML (default: "afterbegin").
  * @param {boolean} [clear=false] - Whether to clear the parentElement before rendering (default: false).
  */
-export function renderListWithTemplate(
-  templateFn,
+export function renderWithTemplate(
+  template,
   parentElement,
-  list,
+  data,
+  callback,
   position = "afterbegin",
   clear = false
 ) {
+  if (callback) {
+    callback(data);
+  }
   // Clear existing content if requested
   if (clear) {
     parentElement.innerHTML = "";
   }
 
   // Generate HTML strings for each item
-  const htmlStrings = list.map(templateFn);
+  const htmlStrings = data.map(template);
 
   // Insert into the DOM at the specified position
-  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+  parentElement.insertAdjacentHTML(callback, position, htmlStrings.join(""));
+}
+
+export async function loadTemplate(path) {
+  const res = await fetch(path);
+  const template = await res.text();
+  return template;
+}
+
+export async function loadHeaderFooter() {
+  const headerTemplate = await loadTemplate("./partials/header.html");
+  const headerElement = document.querySelector("#main-header");
+  renderWithTemplate(headerTemplate, headerElement);
+
+  const footerTemplate = await loadTemplate("./partials/footer.html");
+  const footerElement = document.querySelector("#main-footer");
+  renderWithTemplate(footerTemplate, footerElement);
+}
+
+export async function loadProducts() {
+  const res = await fetch("./data/products.json");
+  const products = await res.json();
+  return products;
+}
+
+export async function loadCart() {
+  const res = await fetch("./data/cart.json");
+  const cart = await res.json();
+  return cart;
+}
+
+export function loadCheckout() {
+  const res = fetch("./data/checkout.json");
+  const checkout = res.json();
+  return checkout;
 }
