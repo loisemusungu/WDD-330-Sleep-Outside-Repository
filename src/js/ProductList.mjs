@@ -23,11 +23,8 @@ export default class ProductList {
     }
 
     async init() {
-        const allProducts = await this.dataSource.getData();
-        this.products = allProducts.filter(
-            product => product.category === this.category
-        );
-        // Use the utility function here
+        const list = await this.dataSource.getData(this.category);
+        this.products = list;
         renderListWithTemplate(productCardTemplate, this.listElement, this.products, "afterbegin", true);
     }
 }
