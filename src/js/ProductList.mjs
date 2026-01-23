@@ -22,7 +22,9 @@ function productCardTemplate(product) {
   
     async init() {
       // fetch products from the data source
-      this.products = await this.dataSource.getData();
+      const list = await this.dataSource.getData(this.category);
+      
+      this.products = list;
       // render the list after fetching
       this.renderList(this.products);
     }
