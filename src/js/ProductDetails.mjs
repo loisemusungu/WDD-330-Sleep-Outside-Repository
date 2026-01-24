@@ -37,8 +37,11 @@ export default class ProductDetails {
     renderProductDetails() {
 
         const productDetailsContainer = document.querySelector(".product-detail");
+
         const clone = productDetailsContainer.cloneNode(true);
+
         productDetailsContainer.innerHTML = "";
+        
         const [h3, h2, img, price, color, desc] = clone.querySelectorAll("h3, h2, img, p, p, p");
         const addBtn = clone.querySelector("div.product-detail__add > #addToCart");
 

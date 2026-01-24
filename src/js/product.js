@@ -1,7 +1,7 @@
 import ProductData from "./ProductData.mjs";
 import { getParam } from "./utils.mjs";
 import ProductDetails from "./ProductDetails.mjs";
-import { displayCount } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 
 //create an instance of productData class with the URL it should use to look for product
 const dataSource = new ProductData("tents");
@@ -15,4 +15,4 @@ const product = new ProductDetails(productID, dataSource);
 //Call the init method of the class
 product.init();
 
-displayCount(".count", "so-cart");
+loadHeaderFooter();

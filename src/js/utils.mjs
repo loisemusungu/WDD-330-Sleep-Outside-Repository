@@ -25,7 +25,7 @@ export function setClick(selector, callback) {
 export function getParam(param) {
   const queryString = window.location.search;
   const searchParam = new URLSearchParams(queryString);
-  const product = searchParam.get("product");
+  const product = searchParam.get(param);
   return product;
 
 }
@@ -42,9 +42,42 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   parentElement.insertAdjacentHTML(position,  htmlStrings.join(""));
 }
 
-export function displayCount(element, key) {
+export function renderWithTemplate(template, parentElement, data = null, callback) {
+
+  //insertAdjacentHTML("") is a DOM method use to insert html code as a string
+  parentElement.innerHTML = template;
+
+  if (callback) {
+    callback();
+  }
+}
+
+export async function loadTemplate(path) {
+  const response = await fetch(path);
+  const template = await response.text();
+  return template;
+
+}
+
+export async function loadHeaderFooter() {
+  //header
+  const headerTemplate = await loadTemplate("/partials/header.html");
+  const headerElement = document.querySelector("#main-header");
+
+  //footer
+  const footerTemplate = await loadTemplate("/partials/footer.html");
+  const footerElement = document.querySelector("#main-footer");
+
+  renderWithTemplate(headerTemplate, headerElement);
+  renderWithTemplate(footerTemplate, footerElement);
+
+  displayCount(".count", "so-cart");
+
+}
+
+export function displayCount(element, storageKey) {
   const el = document.querySelector(element);
-  const storage = getLocalStorage(key);
+  const storage = getLocalStorage(storageKey);
 
   const count = storage ? storage.length : 0;
   el.textContent = count;
