@@ -1,12 +1,28 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
+  const cartItems = getLocalStorage("so-cart") || [];
+  if (cartItems.length === 0) {
+    document.querySelector(".product-list").innerHTML =
+      "<p>Your cart is empty</p>";
+    return;
+  }
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
 
+const SavedItemId = [];
+
 function cartItemTemplate(item) {
+  if (!item || !item.Image) {
+    return ""; // Skip items that don't have required properties
+  }
+  if (SavedItemId.includes(item.Id)) {
+    return "";
+  } else {
+    SavedItemId.push(item.id);
+  }
+
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
@@ -18,7 +34,7 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
+  <strong><p class="cart-card__quantity">qty: ${item.quantity}</p></strong>
   <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
 
@@ -26,3 +42,4 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
+loadHeaderFooter();

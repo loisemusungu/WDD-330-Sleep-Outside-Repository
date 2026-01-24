@@ -131,6 +131,18 @@ button {
   fill: gray;
 }
 
+.cart_count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: grey;
+  color: white;
+  font-size: 0.6rem;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 5px;
+}
+
 /* End cart icon styles */
 
 .mission {
@@ -239,6 +251,53 @@ button {
 .cart-card__price {
   grid-row: 2;
   grid-column: 3;
+}
+
+.newsletter {
+  background-color: var(--light-grey);
+  padding: 1em;
+  margin: 1em 0;
+  text-align: center;
+}
+
+.newsletter h2 {
+  margin-bottom: 0.5em;
+}
+
+.newsletter form {
+  margin-top: 1em;
+}
+
+.newsletter input[type="email"] {
+  padding: 1em;
+  width: 350px;
+  max-width: 80%;
+  margin-right: 0.5em;
+  border: 1px solid var(--dark-grey);
+  border-radius: 0.3rem;
+}
+
+.newsletter button {
+  padding: 0.5em 1em;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 0.5em;
+  border-radius: 0.3rem;
+  width: 300px;
+  max-width: 80%;
+}
+
+.newsletter button:hover {
+  background-color: var(--tertiary-color);
+}
+
+#sub-msg {
+  display: none;
+  margin-top: 1em;
+  color: var(--secondary-color);
+  font-weight: bold;
 }
 
 @media screen and (min-width: 500px) {
