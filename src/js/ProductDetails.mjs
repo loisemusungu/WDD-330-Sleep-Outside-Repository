@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage , displayCount} from "./utils.mjs";
 
 export default class ProductDetails {
 
@@ -33,6 +33,9 @@ export default class ProductDetails {
             cartItems.push(this.product);
         }
         setLocalStorage("so-cart", cartItems);
+
+        //To update de superscript after each addition to cart
+        displayCount(".cart_count", "so-cart");
     }
 
     renderProductDetails() {
@@ -74,7 +77,10 @@ function productDetailsTemplate(product) {
 //     </div></section>`;
 // }
 
-// Alternative method to increase the quantity of the product, the idea was to avoir modifying the data of the product { From : Schnaider Jean Louis }
+//******************************************************** */
+// Alternative method to increase the quantity of the product
+// The goal was to avoid modifying the data of the product
+// { From : Schnaider Jean Louis }
 //   const group = {};
 //   cartItems.forEach((item) => {
 //     const id = item.Id;
@@ -85,29 +91,22 @@ function productDetailsTemplate(product) {
 //     }
 //   });
 
-
-// ************* Alternative render<productDetails method { From :  Schnaider Jean Louis ] ***************
-        // renderProductDetails() {
-
-        //     const productDetailsContainer = document.querySelector(".product-detail");
-
-        //     const clone = productDetailsContainer.cloneNode(true);
-
-        //     productDetailsContainer.innerHTML = "";
-            
-        //     const [h3, h2, img, price, color, desc] = clone.querySelectorAll("h3, h2, img, p, p, p");
-        //     const addBtn = clone.querySelector("div.product-detail__add > #addToCart");
-
-        //     h3.textContent = this.product.Brand.Name;
-        //     h2.textContent = this.product.NameWithoutBrand;
-        //     img.src = this.product.Image;
-        //     img.alt = `${this.product.Name} Image`;
-        //     price.textContent = `$${this.product.FinalPrice}`;
-        //     color.textContent = this.product.Colors[0].ColorName;
-        //     desc.innerHTML = this.product.DescriptionHtmlSimple;
-
-        //     addBtn.dataset.id = this.productID;
-
-        //     //The clone is not rendered yet so I need to append it to the container first
-        //     productDetailsContainer.replaceWith(clone)
-        // }
+// Alternative renderProductDetails method 
+// { From :  Schnaider Jean Louis }
+    // renderProductDetails() {
+    //     const productDetailsContainer = document.querySelector(".product-detail");
+    //     const clone = productDetailsContainer.cloneNode(true);
+    //     productDetailsContainer.innerHTML = "";
+    //     const [h3, h2, img, price, color, desc] = clone.querySelectorAll("h3, h2, img, p, p, p");
+    //     const addBtn = clone.querySelector("div.product-detail__add > #addToCart");
+    //     h3.textContent = this.product.Brand.Name;
+    //     h2.textContent = this.product.NameWithoutBrand;
+    //     img.src = this.product.Image;
+    //     img.alt = `${this.product.Name} Image`;
+    //     price.textContent = `$${this.product.FinalPrice}`;
+    //     color.textContent = this.product.Colors[0].ColorName;
+    //     desc.innerHTML = this.product.DescriptionHtmlSimple;
+    //     addBtn.dataset.id = this.productID;
+    //     //The clone is not rendered yet so I need to append it to the container first
+    //     productDetailsContainer.replaceWith(clone)
+    // }

@@ -84,19 +84,21 @@ export async function loadHeaderFooter() {
   const footerTemplate = await loadTemplate("/partials/footer.html");
   const footerElement = document.querySelector("#main-footer");
 
+  renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
 
-  renderWithTemplate(headerTemplate, headerElement);
-
   //Call this function each time loadHeaderFooter run to keep the superscript number updated
-  displayCount(".count", "so-cart");
+  displayCount(".cart_count", "so-cart");
 }
 
 //Add a superscript number of items in the cart to the backpack icon.
-function displayCount(element, storageKey) {
+export function displayCount(element, storageKey) {
   const el = document.querySelector(element);
   const storage = getLocalStorage(storageKey);
-
-  const count = storage ? storage.length : 0;
-  el.textContent = count;
+  let total = 0;
+  for (const i of storage) {
+    total += i.quantity
+  }
+  el.textContent = total ? total : 0;
+  console.log(el)
 }
