@@ -11,7 +11,7 @@ const category = getParam('category');
 const dataSource = new ProductData();
 
 // find the element where the list will show
-const listElement = document.querySelector('.product-list');
+const listElement = document.querySelector('#product-list');
 
 // create the product list
 const myList = new ProductList(category, dataSource, listElement);
