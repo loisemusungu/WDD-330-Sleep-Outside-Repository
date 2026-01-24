@@ -76,13 +76,29 @@ export async function loadTemplate(path) {
 }
 
 export async function loadHeaderFooter() {
-  const headerTemplate = await loadTemplate("./partials/header.html");
-  const footerTemplate = await loadTemplate("./partials/footer.html");  
-  
-  const headerElement = document.getElementById("main-header");
-  const footerElement = document.getElementById("main-footer");
+  //header
+  const headerTemplate = await loadTemplate("/partials/header.html");
+  const headerElement = document.querySelector("#main-header");
 
-  renderWithTemplate(footerTemplate, footerElement);
+  //footer
+  const footerTemplate = await loadTemplate("/partials/footer.html");
+  const footerElement = document.querySelector("#main-footer");
 
   renderWithTemplate(headerTemplate, headerElement);
+  renderWithTemplate(footerTemplate, footerElement);
+
+  //Call this function each time loadHeaderFooter run to keep the superscript number updated
+  displayCount(".cart_count", "so-cart");
+}
+
+//Add a superscript number of items in the cart to the backpack icon.
+export function displayCount(element, storageKey) {
+  const el = document.querySelector(element);
+  const storage = getLocalStorage(storageKey);
+  let total = 0;
+  for (const i of storage) {
+    total += i.quantity
+  }
+  el.textContent = total ? total : 0;
+  console.log(el)
 }
