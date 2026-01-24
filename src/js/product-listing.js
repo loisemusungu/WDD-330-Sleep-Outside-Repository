@@ -1,25 +1,20 @@
-import ProductList from "./ProductList.mjs";
-import ProductData from "./ProductData.mjs";
+import ProductData from './ProductData.mjs';
+import ProductList from './ProductList.mjs';
+import { loadHeaderFooter, getParam } from './utils.mjs';
 
-const dataSource = new ProductData("tents");
+loadHeaderFooter();
 
-const listElement = document.querySelector("#productList");
+// get the category from the url
+const category = getParam('category');
 
-const productList = new ProductList("tents", dataSource, listElement);
+// create the data source
+const dataSource = new ProductData();
 
-async function start() {
-  await productList.init();
+// find the element where the list will show
+const listElement = document.querySelector('.product-list');
 
-  listElement.innerHTML = productList.products
-    .map((item) => `
-      <section class="product-card">
-        <h3>${item.Name}</h3>
-        <img src="${item.Image}" alt="${item.Name}">
-        <p>${item.DescriptionHtmlSimple}</p>
-        <p class="price">$ ${item.FinalPrice}</p>
-      </section>
-    `)
-    .join("");
-}
+// create the product list
+const myList = new ProductList(category, dataSource, listElement);
 
-start();
+// load products
+myList.init();
