@@ -11,8 +11,6 @@ export default class ProductDetails {
   async init() {
     // Get the details for the current product
     this.product = await this.dataSource.findProductById(this.productId);
-    
-    console.log("Fetched product:", this.product);
 
     // Render product details
     this.renderProductDetails();
@@ -48,7 +46,7 @@ function productDetailsTemplate(product) {
   // Product image
   const productImage = document.getElementById('productImage');
   if (productImage) {
-    productImage.src = product.Image;
+    productImage.src = product.PrimaryLarge?.Url;
     productImage.alt = product.NameWithoutBrand;
   }
 
