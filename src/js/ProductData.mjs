@@ -18,6 +18,8 @@ export default class ProductData {
     const data = await convertToJson(response);
     return data.Result;
   }
+
+  // Fetch one product by ID directly from API
   async findProductById(id) {
     const response = await fetch(`${baseUrl}/product/${id}`);
     const data = await convertToJson(response);
