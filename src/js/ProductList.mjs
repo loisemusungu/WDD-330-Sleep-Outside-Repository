@@ -22,7 +22,7 @@ export default class ProductList {
 
     async init() {
         const list = await this.dataSource.getData();
-        this.renderList(list);
+        this.renderList(list.slice(0, 4));
     }
 
     renderList(list) {
@@ -35,17 +35,19 @@ export default class ProductList {
     }
 
 }
-function updateCartBadge() {
-    const cartItems = JSON.parse(localStorage.getItem("so-cart")) || [];
-    const count = cartItems.length;
-    document.querySelector('.cart_count').textContent = count;
-}
-updateCartBadge();
+//This function has no use anymore
+// function updateCartBadge() {
+//     const cartItems = JSON.parse(localStorage.getItem("so-cart")) || [];
+//     const count = cartItems.length;
+//     document.querySelector('.cart_count').textContent = count;
+// }
+// updateCartBadge();
 
-function addToCart(product) {
-    let cart = JSON.parse(localStorage.getItem("so-cart")) || [];
-    cart.push(product);
-    localStorage.setItem("so-cart", JSON.stringify(cart));
-    updateCartBadge();
-}
-export { addToCart };
+//This function should be in ProductDetails.mjs
+// function addToCart(product) {
+//     let cart = JSON.parse(localStorage.getItem("so-cart")) || [];
+//     cart.push(product);
+//     localStorage.setItem("so-cart", JSON.stringify(cart));
+//     updateCartBadge();
+// }
+// export { addToCart };

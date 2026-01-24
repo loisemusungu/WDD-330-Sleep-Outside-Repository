@@ -13,10 +13,19 @@ function renderCartContents() {
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
 
+const SavedItemId = [];
+
 function cartItemTemplate(item) {
   if (!item || !item.Image) {
     return ""; // Skip items that don't have required properties
   }
+  if (SavedItemId.includes(item.Id) ){
+    return "";
+  }
+  else {
+    SavedItemId.push(item.id)
+  }
+
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
