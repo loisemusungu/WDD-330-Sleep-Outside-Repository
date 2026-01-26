@@ -273,3 +273,73 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+
+/* Newsletterbox */
+.newsletter-box {
+  width: 100%;
+  padding: 60px 20px;
+  background: white;
+  display: flex;
+  justify-content: center;
+}
+
+.newsletter-box .container {
+  background: #fff;
+  max-width: 450px;
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.newsletter-box .top {
+  background: #f0a868eb;
+  padding: 30px;
+  color: white;
+  font-size: 40px;
+}
+
+.newsletter-box .bottom {
+  padding: 30px 25px;
+}
+
+.newsletter-box .info p {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.newsletter-box form {
+  display: flex;
+  gap: 10px;
+}
+
+.newsletter-box input[type="email"] {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.newsletter-box input[type="submit"] {
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.newsletter-box input[type="submit"]:hover {
+  background: #1e40af;
+}
+
+#newsletterMessage {
+  display: block;
+  margin-top: 12px;
+  font-size: 13px;
+}
