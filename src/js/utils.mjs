@@ -25,8 +25,8 @@ export function setClick(selector, callback) {
 export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const product = urlParams.get(param);
-  return product;
+  const queryKey = urlParams.get(param);
+  return queryKey;
 } 
 
 /**
@@ -94,11 +94,14 @@ export async function loadHeaderFooter() {
 //Add a superscript number of items in the cart to the backpack icon.
 export function displayCount(element, storageKey) {
   const el = document.querySelector(element);
-  const storage = getLocalStorage(storageKey);
+  let storage = getLocalStorage(storageKey);
+
+  if (!storage) {
+    storage = [];
+  }
   let total = 0;
   for (const i of storage) {
     total += i.quantity
   }
-  el.textContent = total ? total : 0;
-  console.log(el)
+  el.textContent = total;
 }

@@ -14,7 +14,7 @@ function renderCartContents() {
 const SavedItemId = [];
 
 function cartItemTemplate(item) {
-  if (!item || !item.Image) {
+  if (!item || !item.Images) {
     return ""; // Skip items that don't have required properties
   }
   if (SavedItemId.includes(item.Id)) {
@@ -26,7 +26,7 @@ function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Image}"
+      src="${item.Images.PrimarySmall}"
       alt="${item.Name}"
     />
   </a>

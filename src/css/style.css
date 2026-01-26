@@ -135,12 +135,12 @@ button {
   position: absolute;
   top: 0;
   right: 0;
-  background: grey;
-  color: white;
-  font-size: 0.6rem;
-  font-weight: bold;
-  border-radius: 50%;
-  padding: 2px 5px;
+  margin: 6px -3px;
+  background: var(--primary-color);
+  color: var(--dark-grey);
+  font-weight: 500;
+  border-radius: 50px;
+  padding: 1px;
 }
 
 /* End cart icon styles */
@@ -178,6 +178,46 @@ button {
 .product-list a {
   text-decoration: none;
   color: var(--dark-grey);
+}
+
+/* ************* Styles for Home page Category Display ********** */
+.category-container {
+  display: flex;
+  justify-content: space-around;
+}
+.prod-category {
+  margin-top: 10px;
+  background-color: var(--light-grey);
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px var(--dark-grey);
+  transition: 0.3s ease;
+}
+
+.prod-category a {
+  text-decoration: none;
+  display: block;
+}
+
+.sleeping a {
+  margin-top: 12px;
+}
+
+.prod-category img {
+  padding-top: 10px;
+  display: block;
+}
+
+.prod-category p {
+  text-align: center;
+  color: var(--secondary-color);
+}
+
+.prod-category:hover {
+  transform: scale(1.05);
+}
+
+.category {
+  text-transform: capitalize;
 }
 
 /* Styles for product lists */
