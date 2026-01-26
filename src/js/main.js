@@ -6,8 +6,6 @@ import Newsletter from "./newsletter.mjs";
 const newsletter = new Newsletter();
 newsletter.init();
 
-loadHeaderFooter();
-
 const dataSource = new ProductData("tents");
 
 const element = document.querySelector(".product-list");
