@@ -1,5 +1,30 @@
+import { getLocalStorage } from "./utils.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 
+const services = new ExternalServices();
 
+function formDataToJSON(formElement) {
+    // convert the form data into a JSON object
+    const formData = new FormData(formElement);
+    const convertedData = {};
+    formData.forEach((value, key) => {
+        convertedData[key] = value;
+    });
+    return convertedData;
+}
+
+function packageItems(items) {
+    const simplifiefdItems = items.map((item) => {
+        console.log(item);
+        return {
+            id: item.Id,
+            price: item.FinalPrice,
+            name: item.Name,
+            quantity: 1,
+        };
+    });
+    return simplifiefdItems;
+}
 
 export default class CheckoutProcess {
     constructor(key, outputSelector) {
