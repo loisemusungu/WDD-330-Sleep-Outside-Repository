@@ -3,6 +3,8 @@ import ProductList from "./ProductList.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
 import Newsletter from "./newsletter.mjs";
 
+loadHeaderFooter();
+
 const newsletter = new Newsletter();
 newsletter.init();
 
