@@ -102,3 +102,25 @@ export function displayCount(element, storageKey) {
   el.textContent = total ? total : 0;
   console.log(el)
 }
+
+export function alertMessage(message, scroll = true, duration = 3000) {
+  const alertDiv = document.createElement("div");
+  alertDiv.classList.add("alert");
+  alertDiv.innerHTML = `<p>${message}</p><span>X</span>`;
+
+  alertDiv.addEventListener("click", (e) => {
+    if (e.target.tagName === "SPAN") {
+      main.removeChild(this);
+    }
+  });
+
+  const main = document.querySelector("main");
+  main.prepend(alertDiv);
+  
+  if(scroll) window.scrollTo(0,0);
+}
+
+export function removeAllAlerts() { 
+  const alerts = document.querySelectorAll(".alert");
+  alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
+}
