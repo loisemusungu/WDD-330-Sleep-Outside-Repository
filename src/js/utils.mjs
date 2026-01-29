@@ -50,7 +50,7 @@ export function renderListWithTemplate(
   }
 
   // Generate HTML strings for each item
-  const htmlStrings = list.map(templateFn);
+  //const htmlStrings = list.map(templateFn);
 
   // Insert into the DOM at the specified position
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
@@ -77,11 +77,11 @@ export async function loadTemplate(path) {
 
 export async function loadHeaderFooter() {
   //header
-  const headerTemplate = await loadTemplate("/partials/header.html");
+  const headerTemplate = await loadTemplate("../partials/header.html");
   const headerElement = document.querySelector("#main-header");
 
   //footer
-  const footerTemplate = await loadTemplate("/partials/footer.html");
+  const footerTemplate = await loadTemplate("../partials/footer.html");
   const footerElement = document.querySelector("#main-footer");
 
   renderWithTemplate(headerTemplate, headerElement);
