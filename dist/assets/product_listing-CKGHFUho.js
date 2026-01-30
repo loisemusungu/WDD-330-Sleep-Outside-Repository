@@ -1,4 +1,4 @@
-import{r as s,l as i,a as c}from"./utils-fWqL0oM3.js";import{E as o}from"./ExternalServices-D0VG2S6o.js";function n(t){return`
+import{r as s,l as i,a as c}from"./utils-DuoOZstV.js";import{E as o}from"./ExternalServices-D0VG2S6o.js";function n(t){return`
     <li class="product-card">
       <a href="/product_pages/?product=${t.Id}">
         <img src="${t.Images.PrimaryMedium}" alt="${t.Name}">
