@@ -24,10 +24,10 @@ function cartItemTemplate(item) {
   } else {
     SavedItemId.push(item.id);
   }
-    const euroPrice = new Intl.NumberFormat('de-DE',
-      {
-          style: 'currency', currency: 'EUR',
-      }).format(Number(item.FinalPrice) * 0.85);
+  const euroPrice = new Intl.NumberFormat("de-DE", {
+    style: "currency",
+    currency: "EUR",
+  }).format(Number(item.FinalPrice) * 0.85);
 
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
@@ -48,4 +48,3 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
-

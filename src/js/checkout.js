@@ -7,11 +7,11 @@ const order = new CheckoutProcess("so-cart", ".checkout-summary");
 order.init();
 
 document
-    .querySelector("#zip")
-    .addEventListener("blur", order.calculateOrderTotal.bind(order));
+  .querySelector("#zip")
+  .addEventListener("blur", order.calculateOrderTotal.bind(order));
 
 document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    order.checkout();
+  order.checkout();
 });

@@ -1,1 +1,0 @@
-import{l as t,a as o}from"./utils-Da9t4Hyi.js";import{P as a,a as e}from"./ProductList-BJXeMtir.js";t();const r=o("category"),c=new e,s=document.querySelector(".product-list"),n=new a(r,c,s);n.init();
