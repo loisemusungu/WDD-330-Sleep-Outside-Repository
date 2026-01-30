@@ -96,9 +96,10 @@ export function displayCount(element, storageKey) {
   const el = document.querySelector(element);
   const storage = getLocalStorage(storageKey);
   let total = 0;
-  for (const i of storage) {
+  if (Array.isArray(storage)) {
+    for (const i of storage) {
     total += i.quantity
   }
-  el.textContent = total ? total : 0;
-  console.log(el)
+  }
+  el.textContent = total || 0;
 }

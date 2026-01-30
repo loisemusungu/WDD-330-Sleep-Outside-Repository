@@ -12,7 +12,7 @@ export default defineConfig({
         cart: "src/cart/index.html",
         checkout: "src/checkout/index.html",
         product_listing: "src/product_listing/index.html",
-        product_pages: "src/product_pages/index.html"
+        product_pages: "src/product_pages/index.html",
       },
     },
   },
