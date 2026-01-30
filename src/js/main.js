@@ -8,13 +8,13 @@ loadHeaderFooter();
 const newsletter = new Newsletter();
 newsletter.init();
 
-const dataSource = new ExternalServices("tents");
+// const dataSource = new ExternalServices("tents");
 
-const element = document.querySelector(".product-list");
+// const element = document.querySelector(".product-list");
 
-const productList = new ProductList("Tents", dataSource, element);
+// const productList = new ProductList("Tents", dataSource, element);
 
-productList.init();
+// productList.init();
 
 // function updateCartCount(count) {
 //     document.querySelector('.cart_count').textContent = count;

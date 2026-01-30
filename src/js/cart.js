@@ -5,12 +5,12 @@ loadHeaderFooter();
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || [];
   if (cartItems.length === 0) {
-    document.querySelector(".product-list").innerHTML =
+    document.querySelector(".cart-list").innerHTML =
       "<p>Your cart is empty</p>";
     return;
   }
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  document.querySelector(".cart-list").innerHTML = htmlItems.join("");
 }
 
 const SavedItemId = [];
@@ -24,6 +24,10 @@ function cartItemTemplate(item) {
   } else {
     SavedItemId.push(item.id);
   }
+    const euroPrice = new Intl.NumberFormat('de-DE',
+      {
+          style: 'currency', currency: 'EUR',
+      }).format(Number(item.FinalPrice) * 0.85);
 
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
@@ -37,7 +41,7 @@ function cartItemTemplate(item) {
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
   <strong><p class="cart-card__quantity">qty: ${item.quantity}</p></strong>
-  <p class="cart-card__price">$${item.FinalPrice}</p>
+  <p class="cart-card__price">${euroPrice}</p>
 </li>`;
 
   return newItem;
