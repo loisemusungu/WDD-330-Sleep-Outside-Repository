@@ -44,11 +44,10 @@ export default class ProductDetails {
 }
 
 function productDetailsTemplate(product) {
-    document.querySelector("h2").textContent = product.Category.charAt(0).toUpperCase() + product.Category.slice(1);
-    document.querySelector("#p-brand").textContent = product.Brand.Name;
-    document.querySelector("#p-name").textContent = product.NameWithoutBrand;
+    document.querySelector("h2").textContent = product.Brand.Name;
+    document.querySelector("h3").textContent = product.NameWithoutBrand;
 
-    const productImage = document.querySelector("#p-image");
+    const productImage = document.getElementById("productImage");
     productImage.src = product.Images.PrimaryLarge;
     productImage.alt = product.NameWithoutBrand;
 
@@ -57,9 +56,10 @@ function productDetailsTemplate(product) {
             style: 'currency', currency: 'EUR',
         }).format(Number(product.FinalPrice) * 0.85);
 
-    document.querySelector("#p-price").textContent = `${euroPrice} EUR`;
-    document.querySelector("#p-color").textContent = product.Colors[0].ColorName;
-    document.querySelector("#p-description").innerHTML = product.DescriptionHtmlSimple;
+    //Someone decided the proce should be in Euro
+    document.querySelector("#productPrice").textContent = `${euroPrice}`;
+    document.querySelector("#productColor").textContent = product.Colors[0].ColorName;
+    document.querySelector("#productDesc").innerHTML = product.DescriptionHtmlSimple;
 
     document.querySelector("#addToCart").dataset.id = product.Id;
 }
