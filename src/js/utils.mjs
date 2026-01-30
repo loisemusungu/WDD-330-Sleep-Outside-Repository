@@ -50,7 +50,7 @@ export function renderListWithTemplate(
   }
 
   // Generate HTML strings for each item
-  //const htmlStrings = list.map(templateFn);
+  const htmlStrings = list.map(templateFn);
 
   // Insert into the DOM at the specified position
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
