@@ -97,6 +97,7 @@ p {
 /* utility classes */
 .highlight {
   color: var(--tertiary-color);
+  text-transform: capitalize;
 }
 
 button {
