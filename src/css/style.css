@@ -135,12 +135,12 @@ button {
   position: absolute;
   top: 0;
   right: 0;
-  background: grey;
-  color: white;
-  font-size: 0.6rem;
-  font-weight: bold;
-  border-radius: 50%;
-  padding: 2px 5px;
+  margin: 6px -3px;
+  background: var(--primary-color);
+  color: var(--dark-grey);
+  font-weight: 500;
+  border-radius: 50px;
+  padding: 1px;
 }
 
 /* End cart icon styles */
