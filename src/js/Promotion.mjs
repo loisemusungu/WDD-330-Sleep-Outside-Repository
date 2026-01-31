@@ -25,3 +25,37 @@ export default class Newsletter {
         
     }
 }
+// Promotional dialog functionality
+
+const promoKey = "promoSeen";
+
+export function promoModal() {
+    const promoDialog = document.getElementById("wlc-promo");
+    const registerBtn = document.getElementById("btn-register");
+    const dismissBtn = document.getElementById("btn-dismiss");
+
+    if (!promoDialog) return;
+    
+    function showPromoAtFirstVisit() {
+        const promoSeen = localStorage.getItem(promoKey);
+        if (!promoSeen) {
+            promoDialog.showModal();
+        }
+    }
+
+    function closePromo() {
+        setLocalStorage(promoKey, "true");
+        promoDialog.close();
+    }
+
+    dismissBtn?.addEventListener("click", closePromo);
+
+    registerBtn?.addEventListener("click", () => {
+        //window.location.href = "/register.html";
+        promoDialog.close();
+    });
+
+    showPromoAtFirstVisit();
+
+   
+}

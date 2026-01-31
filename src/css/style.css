@@ -452,6 +452,79 @@ menu {
   font-weight: bold;
 }
 
+#wlc-promo {
+  margin: 2rem auto;
+  padding: 1rem;
+  max-width: 400px;
+  text-align: center;
+  border: 2px solid var(--secondary-color);
+  border-radius: 10px;
+  background-color: var(--light-grey);
+
+  &::backdrop {
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+  
+    }
+
+  & #modal-inner {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+  }
+
+  & h2 {
+    margin-bottom: 1rem;
+    font-size: 1.9rem;
+  }
+
+  & p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  & .highlight {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  & .promo-desc {
+    font-size: 1.2rem;
+    margin-bottom: .5rem;
+    line-height: 1.5;
+
+  }
+
+  & .actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  & .actions button {
+    padding: 0.5rem 1.5rem;
+    font-size: 1.2rem;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.3rem;
+  }
+
+  & .actions button:hover {
+    background-color: var(--tertiary-color);
+  }
+
+
+}
+
+
+
+
+
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;

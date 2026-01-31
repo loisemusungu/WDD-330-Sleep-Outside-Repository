@@ -1,12 +1,15 @@
 // import ExternalServices from "./ExternalServices.mjs";
 // import ProductList from "./ProductList.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
-import Newsletter from "./newsletter.mjs";
+import Newsletter from "./Promotion.mjs";
+import { promoModal } from "./Promotion.mjs";
 
 loadHeaderFooter();
 
 const newsletter = new Newsletter();
 newsletter.init();
+
+promoModal();
 
 // const dataSource = new ExternalServices("tents");
 
