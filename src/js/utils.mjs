@@ -103,3 +103,4 @@ export function displayCount(element, storageKey) {
   }
   el.textContent = total || 0;
 }
+
